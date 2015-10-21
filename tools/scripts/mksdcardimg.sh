@@ -6,8 +6,10 @@ IMG="${1}_sdcard.img"
 
 ${TOOLS_DIR}/bin/rkcrc -p parameter parameter.img
 
+# default size of sd_image is 1950, but can be overwritten by SD_IMG_SIZE_MB variable
+IMG_SIZE_MB=${SD_IMG_SIZE_MB:-1950}
 rm -rf $IMG
-dd if=/dev/zero of=$IMG bs=1M count=1950
+dd if=/dev/zero of=$IMG bs=1M count=${IMG_SIZE_MB}
 
 export ROOTFS_SECTOR=65536
 sudo fdisk $IMG  << EOF
