@@ -3,3 +3,6 @@
 tools/*
 rockdev
 boards
+rk_loader/
+rootfs/
+
